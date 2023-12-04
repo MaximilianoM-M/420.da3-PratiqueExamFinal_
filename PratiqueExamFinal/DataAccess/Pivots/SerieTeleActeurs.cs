@@ -5,10 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PratiqueExamFinal.DataAccess.Pivots;
-internal class SerieTeleActeurs
+public class SerieTeleActeurs
 {
     public int ActeurId { get; set; }
     public int SerieTeleId { get; set; }
+
+    public SerieTeleActeurs()
+    {
+
+    }
 
     public SerieTeleActeurs(int acteurId, int serieTeleId) 
     { 

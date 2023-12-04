@@ -12,7 +12,7 @@ namespace PratiqueExamFinal.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.InsertData(
+            _ = migrationBuilder.InsertData(
                 table: "Acteurs",
                 columns: new[] { "Id", "Age", "NomActeur" },
                 values: new object[,]
@@ -22,7 +22,7 @@ namespace PratiqueExamFinal.Migrations
                     { 3, "65", "Giancarlo Esposito" }
                 });
 
-            migrationBuilder.InsertData(
+            _ = migrationBuilder.InsertData(
                 table: "SerieTeles",
                 columns: new[] { "Id", "Genre", "NomSerieTele" },
                 values: new object[,]
@@ -35,27 +35,27 @@ namespace PratiqueExamFinal.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
+            _ = migrationBuilder.DeleteData(
                 table: "Acteurs",
                 keyColumn: "Id",
                 keyValue: 1);
 
-            migrationBuilder.DeleteData(
+            _ = migrationBuilder.DeleteData(
                 table: "Acteurs",
                 keyColumn: "Id",
                 keyValue: 2);
 
-            migrationBuilder.DeleteData(
+            _ = migrationBuilder.DeleteData(
                 table: "Acteurs",
                 keyColumn: "Id",
                 keyValue: 3);
 
-            migrationBuilder.DeleteData(
+            _ = migrationBuilder.DeleteData(
                 table: "SerieTeles",
                 keyColumn: "Id",
                 keyValue: 1);
 
-            migrationBuilder.DeleteData(
+            _ = migrationBuilder.DeleteData(
                 table: "SerieTeles",
                 keyColumn: "Id",
                 keyValue: 2);

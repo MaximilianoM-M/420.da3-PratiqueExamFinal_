@@ -66,7 +66,7 @@ partial class SerieTeleManagementForm
         actionButton.TabIndex = 1;
         actionButton.Text = "ACTION";
         actionButton.UseVisualStyleBackColor = true;
-        // actionButton.Click += actionButton_Click;
+        actionButton.Click += actionButton_Click_1;
         // 
         // cancelButton
         // 
@@ -77,7 +77,7 @@ partial class SerieTeleManagementForm
         cancelButton.TabIndex = 0;
         cancelButton.Text = "Annuler";
         cancelButton.UseVisualStyleBackColor = true;
-        //cancelButton.Click += cancelButton_Click;
+        cancelButton.Click += cancelButton_Click_1;
         // 
         // tableLayoutPanel1
         // 
@@ -118,6 +118,7 @@ partial class SerieTeleManagementForm
         serietelevisionActeurListBox.ItemHeight = 15;
         serietelevisionActeurListBox.Location = new Point(10, 149);
         serietelevisionActeurListBox.Name = "serietelevisionActeurListBox";
+        serietelevisionActeurListBox.SelectionMode = SelectionMode.MultiSimple;
         serietelevisionActeurListBox.Size = new Size(216, 226);
         serietelevisionActeurListBox.TabIndex = 7;
         // 
@@ -147,7 +148,6 @@ partial class SerieTeleManagementForm
         genreLabel.Size = new Size(216, 15);
         genreLabel.TabIndex = 4;
         genreLabel.Text = "Genre de la Série Télévision :";
-        //genreLabel.Click += genreLabel_Click;
         // 
         // serieteleTextBox
         // 
@@ -184,7 +184,6 @@ partial class SerieTeleManagementForm
         idLabel.Size = new Size(216, 15);
         idLabel.TabIndex = 0;
         idLabel.Text = "ID:";
-        //idLabel.Click += idLabel_Click;
         // 
         // SerieTeleManagementForm
         // 

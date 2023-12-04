@@ -72,6 +72,7 @@ partial class MainMenu
         SérieTeleListBox.Name = "SérieTeleListBox";
         SérieTeleListBox.Size = new Size(286, 355);
         SérieTeleListBox.TabIndex = 0;
+        SérieTeleListBox.SelectedIndexChanged += SérieTeleListBox_SelectedIndexChanged;
         // 
         // buttonsPanel
         // 
@@ -108,6 +109,7 @@ partial class MainMenu
         deleteSerieTeleBtn.TabIndex = 3;
         deleteSerieTeleBtn.Text = "Supprimer Série Téle";
         deleteSerieTeleBtn.UseVisualStyleBackColor = true;
+        deleteSerieTeleBtn.Click += deleteSerieTeleBtn_Click;
         // 
         // editSerieTeleBtn
         // 
@@ -119,6 +121,7 @@ partial class MainMenu
         editSerieTeleBtn.TabIndex = 2;
         editSerieTeleBtn.Text = "Modifier Série Téle";
         editSerieTeleBtn.UseVisualStyleBackColor = true;
+        editSerieTeleBtn.Click += editSerieTeleBtn_Click;
         // 
         // serieteleViewBtn
         // 
@@ -130,6 +133,7 @@ partial class MainMenu
         serieteleViewBtn.TabIndex = 1;
         serieteleViewBtn.Text = "Détails de la Série Téle";
         serieteleViewBtn.UseVisualStyleBackColor = true;
+        serieteleViewBtn.Click += serieteleViewBtn_Click;
         // 
         // createSerieTeleBtn
         // 
@@ -140,6 +144,7 @@ partial class MainMenu
         createSerieTeleBtn.TabIndex = 0;
         createSerieTeleBtn.Text = "Crée Nouvelle Série Téle";
         createSerieTeleBtn.UseVisualStyleBackColor = true;
+        createSerieTeleBtn.Click += createSerieTeleBtn_Click;
         // 
         // MainMenu
         // 

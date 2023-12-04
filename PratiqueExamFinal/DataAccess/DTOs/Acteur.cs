@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PratiqueExamFinal.DataAccess.DTOs;
-internal class Acteur
+public class Acteur
 {
     public const int MAX_NOM_LENGTH = 40;
     public const int MAX_AGE_LENGTH = 2;
@@ -27,6 +27,11 @@ internal class Acteur
       this.NomActeur = nomActeur;
       this.Age = age;
       this.Version = version;
+    }
+
+    public override string ToString()
+    {
+        return this.Id.ToString() + " - " + this.NomActeur;
     }
 
 }

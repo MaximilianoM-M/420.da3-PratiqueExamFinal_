@@ -5,16 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PratiqueExamFinal.DataAccess.DTOs;
-internal class SerieTele
+public class SerieTele
 {
     public const int MAX_NOMSERIETELE_LENGTH = 40;
-    public const int MAX_GENRE_LENGTH = 15;
+    public const int MAX_GENRE_LENGTH = 50;
     public int Id { get; set; }
     public string NomSerietele { get; set; }
     public string Genre { get; set; }
     public byte[] Version { get; set; }
 
-    public virtual List<Acteur> Acteurs { get; set; }
+    public virtual List<Acteur> Acteurs { get; set; } = new List<Acteur>();
 
     public SerieTele() 
     { 
@@ -27,5 +27,10 @@ internal class SerieTele
         this.NomSerietele = nomSerietele;
         this.Genre = genre;
         this.Version = version;
+    }
+
+    public override string ToString()
+    {
+        return this.Id.ToString()  + " - " + this.NomSerietele;
     }
 }

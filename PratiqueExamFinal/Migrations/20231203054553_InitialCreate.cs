@@ -10,7 +10,7 @@ namespace PratiqueExamFinal.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "Acteurs",
                 columns: table => new
                 {
@@ -22,10 +22,10 @@ namespace PratiqueExamFinal.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Acteurs", x => x.Id);
+                    _ = table.PrimaryKey("PK_Acteurs", x => x.Id);
                 });
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "SerieTeles",
                 columns: table => new
                 {
@@ -37,10 +37,10 @@ namespace PratiqueExamFinal.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SerieTeles", x => x.Id);
+                    _ = table.PrimaryKey("PK_SerieTeles", x => x.Id);
                 });
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "SerieTeleActeur",
                 columns: table => new
                 {
@@ -49,14 +49,14 @@ namespace PratiqueExamFinal.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SerieTeleActeur", x => new { x.ActeurId, x.SerieTeleId });
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_SerieTeleActeur", x => new { x.ActeurId, x.SerieTeleId });
+                    _ = table.ForeignKey(
                         name: "FK_SerieTeleActeur_Acteurs_ActeurId",
                         column: x => x.ActeurId,
                         principalTable: "Acteurs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
+                    _ = table.ForeignKey(
                         name: "FK_SerieTeleActeur_SerieTeles_SerieTeleId",
                         column: x => x.SerieTeleId,
                         principalTable: "SerieTeles",
@@ -64,7 +64,7 @@ namespace PratiqueExamFinal.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_SerieTeleActeur_SerieTeleId",
                 table: "SerieTeleActeur",
                 column: "SerieTeleId");
@@ -73,13 +73,13 @@ namespace PratiqueExamFinal.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "SerieTeleActeur");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "Acteurs");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "SerieTeles");
         }
     }

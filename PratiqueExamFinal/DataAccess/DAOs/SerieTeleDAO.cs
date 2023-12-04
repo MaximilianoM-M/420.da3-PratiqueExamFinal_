@@ -31,22 +31,22 @@ internal class SerieTeleDAO
 
     public SerieTele Create(SerieTele serietele)
     {
-        this.Contexts.SerieTeles.Add(serietele);
-        this.Contexts.SaveChanges();
+        _ = this.Contexts.SerieTeles.Add(serietele);
+        _ = this.Contexts.SaveChanges();
         return serietele;   
     }
 
     public SerieTele Update(SerieTele serietele)
     {
-        this.Contexts.SerieTeles.Update(serietele);
-        this.Contexts.SaveChanges();
+        _ = this.Contexts.SerieTeles.Update(serietele);
+        _ = this.Contexts.SaveChanges();
         return serietele;
     }
 
     public SerieTele Delete(SerieTele serietele)
     {
-        this.Contexts.SerieTeles.Remove(serietele);
-        this.Contexts.SaveChanges();
+        _ = this.Contexts.SerieTeles.Remove(serietele);
+        _ = this.Contexts.SaveChanges();
         return serietele;
     }
 

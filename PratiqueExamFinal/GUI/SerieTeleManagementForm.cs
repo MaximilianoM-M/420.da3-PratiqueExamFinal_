@@ -22,7 +22,7 @@ internal partial class SerieTeleManagementForm : Form
 
     }
 
-    private PratiqueExamFinalApp parentApp;
+    private readonly PratiqueExamFinalApp parentApp;
     private ViewIntentEnum currentIntent;
     private SerieTele currentSerieTele = null!;
     public SerieTeleManagementForm(PratiqueExamFinalApp parentApp)
@@ -30,7 +30,7 @@ internal partial class SerieTeleManagementForm : Form
         this.parentApp = parentApp;
         InitializeComponent();
         this.ReloadActeursListBox();
-        
+
     }
 
     public void ReloadActeursListBox()
@@ -102,29 +102,74 @@ internal partial class SerieTeleManagementForm : Form
         this.serieteleTextBox.Text = serieTele.NomSerietele;
         this.genreTextBox.Text = serieTele.Genre;
         this.serietelevisionActeurListBox.SelectedItems.Clear();
-        foreach ( Acteur acteur in serieTele.Acteurs)
+        foreach (Acteur acteur in serieTele.Acteurs)
         {
             this.serietelevisionActeurListBox.SelectedItems.Add(acteur);
         }
-       
+
 
 
     }
 
-    
 
-    private void actionButton_Click(object sender, EventArgs e)
+
+
+    private void UpdateInstanceWithData()
     {
-        switch (this.currentIntent)
+        if (this.serieteleTextBox.Text.Length > SerieTele.MAX_NOMSERIETELE_LENGTH)
         {
-
+            throw new Exception($"Nom de Série Télévision trop long,{this.serieteleTextBox.Text.Length} caractères entrés, maximum de {SerieTele.MAX_NOMSERIETELE_LENGTH} ");
         }
+        if (this.genreTextBox.Text.Length > SerieTele.MAX_GENRE_LENGTH)
+        {
+            throw new Exception($"Le genre de la série Télévision est trop long,{this.genreTextBox.Text.Length} caractères entrés, maximum de {SerieTele.MAX_GENRE_LENGTH} ");
+        }
+        this.currentSerieTele.NomSerietele = this.serieteleTextBox.Text;
+        this.currentSerieTele.Genre = this.genreTextBox.Text;
+        List<Acteur> selectedActeurs = new List<Acteur>();
+        foreach (object? selectedActeur in this.serietelevisionActeurListBox.SelectedItems)
+        {
+            selectedActeurs.Add((Acteur)selectedActeur);
+        }
+        this.currentSerieTele.Acteurs = selectedActeurs;
+
     }
 
-        private void cancelButton_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
-    
-}
+
+
    
+
+    private void actionButton_Click_1(object sender, EventArgs e)
+    {
+        try
+        {
+            switch (this.currentIntent)
+            {
+                case ViewIntentEnum.CREATE:
+                case ViewIntentEnum.EDIT:
+                    this.UpdateInstanceWithData();
+                    break;
+                case ViewIntentEnum.VIEW:
+                case ViewIntentEnum.DELETE:
+                default:
+                    // rien a faire 
+                    break;
+            }
+            this.DialogResult = DialogResult.OK;
+        }
+        catch (Exception ex)
+        {
+            _ = MessageBox.Show(ex.Message);
+        }
+
+    }
+
+    private void cancelButton_Click_1(object sender, EventArgs e)
+    {
+        this.DialogResult = DialogResult.Cancel;
+    }
+}
+
+
+
+

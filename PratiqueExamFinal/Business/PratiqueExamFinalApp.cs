@@ -11,10 +11,11 @@ using System.Threading.Tasks;
 namespace PratiqueExamFinal.Business;
 internal class PratiqueExamFinalApp
 {
-    private AppDbContexts context;
-    private MainMenu mainMenu;
-    private SerieTeleDAO serieteleDAO;
-    private ActeurDAO acteurDAO;
+    private readonly AppDbContexts context;
+    private readonly MainMenu mainMenu;
+    private readonly SerieTeleDAO serieteleDAO;
+    private readonly ActeurDAO acteurDAO;
+    private readonly SerieTeleManagementForm serieteleForm;
     public PratiqueExamFinalApp()
     {
         ApplicationConfiguration.Initialize();
@@ -22,6 +23,9 @@ internal class PratiqueExamFinalApp
         this.serieteleDAO = new SerieTeleDAO(this.context);
         this.acteurDAO = new ActeurDAO(this.context);
         this.mainMenu = new MainMenu(this);
+        this.serieteleForm = new SerieTeleManagementForm(this);
+
+
     }
 
     public void Start()
@@ -32,6 +36,59 @@ internal class PratiqueExamFinalApp
     public void Terminate()
     {
         Application.Exit();
+    }
+
+    public SerieTele? CreateNewSerieTele()
+    {
+        SerieTele newserietele = new SerieTele();
+        DialogResult resultat = this.serieteleForm.OpenForCreate(newserietele);
+        if ( resultat == DialogResult.OK ) 
+        {
+            _ = this.serieteleDAO.Create(newserietele);
+           return newserietele;
+        }
+        else
+        {
+            return null; 
+        }
+    }
+
+    public SerieTele? EditSerieTele(SerieTele serietele)
+    {
+        
+        DialogResult resultat = this.serieteleForm.OpenForEdit(serietele);
+        if (resultat == DialogResult.OK)
+        {
+            _ = this.serieteleDAO.Update(serietele);
+            
+        }
+        return serietele;
+
+    }
+
+    public SerieTele? ViewSerieTele(SerieTele serietele)
+    {
+
+        _ = this.serieteleForm.OpenForView(serietele);
+       return serietele;
+
+    }
+
+    public SerieTele? DeleteSerieTele(SerieTele serietele)
+    {
+
+        DialogResult resultat = this.serieteleForm.OpenForDelete(serietele);
+        if (resultat == DialogResult.OK)
+        {
+            _ = this.serieteleDAO.Delete(serietele);
+
+        }
+        else
+        {
+            return null;
+        }
+        return serietele;
+
     }
 
     public List<SerieTele> GetAllSerieTele()
